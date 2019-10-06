@@ -1,45 +1,18 @@
-var express = require('express');
 var elasticsearch = require("elasticsearch");
+let express = require('express');
+
 var apiRouter = express.Router();
+let userCtrl = require('./control/user');
 
-var user = new elasticsearch.Client({
-    host: 'localhost:9200'
+exports.router = (function (){
+
+    let apiRouter = express.Router();
+
+    //user
+    apiRouter.route('/users/post/').post(userCtrl.post);
+  /*  apiRouter.route('/users/login/').post(userCtrl.login);
+    apiRouter.route('/users/delete/').delete(userCtrl.delete);
+    apiRouter.route('/users/info/').get(userCtrl.getUserProfile);*/
+    return apiRouter;
 });
-
-user.ping({
-    requestTimeout: 3000,
-}, function(error){
-    if(error){
-        console.error('elasticsearch cluster is down');
-    }
-    else{
-        console.log('Everything is ok');
-    }
-});
-
-/* POST User */ 
-
-apiRouter.post('/newUser', (req, res) =>  {
-    if(!req.body.id){
-        return res.status(400).send({
-            message : 'Id is required'
-        });
-    }
-    user.index({
-        index : 'user',
-        type: 'userType',
-        id: req.body.id,
-        body: req.body
-    }, function(err,resp,status){
-        if(err){
-            console.log(err);
-        }
-        else {
-            return res.status(200).send({
-                message : 'POST user success'
-            })
-        }
-    });
-})
-
 

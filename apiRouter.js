@@ -3,30 +3,32 @@ let express = require('express');
 
 var apiRouter = express.Router();
 let userCtrl = require('./control/user');
-let barsCtrl = require('./control/bars');
-let reservationCtrl = require('./control/reservation');
-
-
+let barCtrl = require('./control/bar');
+let bookingCtrl = require('./control/booking');
 
 exports.router = (function (){
 
     let apiRouter = express.Router();
 
     //user
-    apiRouter.route('/users/post/').post(userCtrl.post);
+    apiRouter.route('/users/new/').post(userCtrl.post);
     apiRouter.route('/users/login/').post(userCtrl.login);
     apiRouter.route('/users/delete/').delete(userCtrl.delete);
+    apiRouter.route('/users/modify/').put(userCtrl.modify);
     apiRouter.route('/users/info/').get(userCtrl.getUserProfile);
 
-    apiRouter.route('/bars/post/').post(barsCtrl.post);
-    apiRouter.route('/bars/login/').post(barsCtrl.login);
-    apiRouter.route('/bars/delete/').delete(barsCtrl.delete);
-    apiRouter.route('/bars/info/').get(barsCtrl.getUserProfile);
+    apiRouter.route('/bars/new/').post(barCtrl.post);
+    apiRouter.route('/bars/delete/').delete(barCtrl.delete);
+    apiRouter.route('/bars/modify/').put(barCtrl.modify);
+    apiRouter.route('/bars/info/').get(barCtrl.getUserProfile);
+    apiRouter.route('/bars/list/').get(barCtrl.getAllUsers);
+    apiRouter.route('/bars/search/').get(barCtrl.getCloseBars);
 
-    apiRouter.route('/reservation/post/').post(reservationCtrl.post);
-    apiRouter.route('/reservation/login/').post(reservationCtrl.login);
-    apiRouter.route('/reservation/delete/').delete(reservationCtrl.delete);
-    apiRouter.route('/reservation/info/').get(reservationCtrl.getUserProfile);
+    apiRouter.route('/bookings/new/').post(bookingCtrl.post);
+    apiRouter.route('/bookings/delete/').delete(bookingCtrl.delete);
+    apiRouter.route('/bookings/modify/').put(bookingCtrl.login);
+    apiRouter.route('/bookings/info/').get(bookingCtrl.getBookingInfo);
+    apiRouter.route('/bookings/list/').get(bookingCtrl.getBookingsByUser);
+
     return apiRouter;
 });
-

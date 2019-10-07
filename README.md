@@ -1,13 +1,13 @@
-# Coworking_Bars
+# Coworking_Bars #
 
 ## Elastic Search 7.2.1 ##
 
 Modifier le fichier de configuration elasticsearch.yml:\
-cluster.name: coworking-cluster\
-node.name: coworking-node\
-path.data: [chemin où stocker les données]\
-path.logs: [chemin où stocker les fichiers de log]\
-path.repo: [chemin où stocker les sauvegardes]
+&nbsp;&nbsp;cluster.name: coworking-cluster\
+&nbsp;&nbsp;node.name: coworking-node\
+&nbsp;&nbsp;path.data: [chemin où stocker les données]\
+&nbsp;&nbsp;path.logs: [chemin où stocker les fichiers de log]\
+&nbsp;&nbsp;path.repo: [chemin où stocker les sauvegardes]
 
 Relancer Elastic Search pour prendre en compte les modifications.
 
@@ -121,3 +121,12 @@ Pour supprimer un index:\
 
 Pour effectuer une recherche avec des paramètres:\
 `curl -X GET "localhost:9200/[index]/_search?q=[clé]:[valeur]"`
+
+## API Node ##
+
+Installer les modules:\
+`npm install [-g pour installation globale] [elasticsearch cors]`
+
+Lancer le serveur:\
+`node ./index.js`
+

@@ -26,7 +26,7 @@ exports.router = (function (){
 
     apiRouter.route('/bookings/new/').post(bookingCtrl.post);
     apiRouter.route('/bookings/delete/').delete(bookingCtrl.delete);
-    apiRouter.route('/bookings/modify/').put(bookingCtrl.login);
+    apiRouter.route('/bookings/modify/').put(bookingCtrl.modify);
     apiRouter.route('/bookings/info/').get(bookingCtrl.getBookingInfo);
     apiRouter.route('/bookings/list/').get(bookingCtrl.getBookingsByUser);
 

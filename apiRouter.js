@@ -1,7 +1,7 @@
 var elasticsearch = require("elasticsearch");
 let express = require('express');
 
-var apiRouter = express.Router();
+//var apiRouter = express.Router();
 let userCtrl = require('./control/user');
 let barCtrl = require('./control/bar');
 let bookingCtrl = require('./control/booking');
